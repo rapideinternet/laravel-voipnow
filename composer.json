@@ -1,0 +1,23 @@
+{
+    "name": "rapide/voipnow",
+    "description": "Package to communicate with 4PSA VoipNow serrvers",
+    "authors": [
+        {
+            "name": "Rens Reinders",
+            "email": "rens@rapide.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Rapide\\VoipNow\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
