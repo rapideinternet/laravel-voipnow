@@ -1,6 +1,6 @@
 {
     "name": "rapide/voipnow",
-    "type": "laravel package",
+    "type": "package",
     "description": "Package to communicate with 4PSA VoipNow serrvers",
     "homepage": "https://github.com/rapideinternet/laravel-voipnow",
     "authors": [
