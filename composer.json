@@ -1,10 +1,14 @@
 {
     "name": "rapide/voipnow",
+    "type": "laravel package",
     "description": "Package to communicate with 4PSA VoipNow serrvers",
+    "homepage": "https://github.com/rapideinternet/laravel-voipnow",
     "authors": [
         {
             "name": "Rens Reinders",
-            "email": "rens@rapide.nl"
+            "email": "rens@rapide.nl",
+            "homepage": "https://rapide.nl",
+                "role": "Developer"
         }
     ],
     "require": {
