@@ -9,11 +9,17 @@
             "email": "rens@rapide.nl",
             "homepage": "https://rapide.nl",
                 "role": "Developer"
+        },
+        {
+            "name": "Lucas van der Have",
+            "email": "lucas@rapide.nl",
+            "homepage": "https://rapide.nl",
+                "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.4.0",
-        "illuminate/support": "4.2.*"
+        "illuminate/support": "5.2.*"
     },
     "autoload": {
         "classmap": [
