@@ -159,6 +159,18 @@ class VoipService {
 		return null;
 	}
 
+	public function getExtentions()
+	{
+		$result = $this->callServer('GET', 'getExtensions');
+
+		if(isset($result->result) == true && $result->result == "failure")
+		{
+			return array();
+		}
+
+		return $result;
+	}
+
 	public function transfer($phoneCallViewId, $transferToNumber)
 	{
 		$response = $this->callServer("PUT", "phoneCalls/@me/@self/".$phoneCallViewId, [
