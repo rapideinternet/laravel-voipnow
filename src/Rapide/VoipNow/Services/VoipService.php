@@ -11,11 +11,11 @@ class VoipService {
 
 	public function __construct()
 	{
-		$this->clientID = \Config::get('voipnow::voipnow.client_id');
-		$this->clientSecret = \Config::get('voipnow::voipnow.client_secret');
-		$this->authUrl = \Config::get('voipnow::voipnow.auth_url');
-		$this->apiUrl = \Config::get('voipnow::voipnow.api_url');
-		$this->callerIdPrefix = \Config::get('voipnow::voipnow.caller_id_prefix');
+		$this->clientID = config('voipnow.client_id');
+		$this->clientSecret = config('voipnow.client_secret');
+		$this->authUrl = config('voipnow.auth_url');
+		$this->apiUrl = config('voipnow.api_url');
+		$this->callerIdPrefix = config('voipnow.caller_id_prefix');
 	}
 
 	/**
