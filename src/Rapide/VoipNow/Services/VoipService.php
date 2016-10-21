@@ -43,7 +43,6 @@ class VoipService {
 	 *
 	 * @return mixed
 	 */
-
 	public function getToken($type = "system")
 	{
 		$fields = [
