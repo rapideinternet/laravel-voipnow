@@ -18,7 +18,7 @@ class VoipNowServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		// $this->package('rapide/voipnow');
+		//$this->package('rapideinternet/voipnow');
 	}
 
 	/**
