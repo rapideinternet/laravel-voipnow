@@ -495,7 +495,6 @@ class VoipService {
 	public function callRestClient($url = "", $method = "GET", $data = array(), &$code = 0)
 	{
 		$token = $this->renewToken("unified");
-
 		// prepend if not full url
 		if(strstr($url, "http") == false)
 		{
@@ -536,7 +535,7 @@ class VoipService {
 
 		curl_close($ch);
 
-		if($code == 200)
+		if($code == 200 || $code == 201)
 		{
 			return json_decode($result, true);
 		}
@@ -606,17 +605,17 @@ class VoipService {
 		}
 	}
 
-	public function addPhoneCallEvent($extendedNumber = "", $type = "", $url = "")
+	public function addPhoneCallEvent($extendedNumber = "", $type = "", $url = "", $note = "")
 	{
 		$data = array(
 			'type' => $this->translateCallEventType($type),
 			'method' => '1', // 1=post, 0=get
+			'note' => $note,
 			'url' => $url,
 			'status' => '1' // 1 for active, 0 for inactive
 		);
 
 		$result = $this->callRestClient("extensions/@me/".$extendedNumber."/phoneCallEvents", "POST", $data);
-
 		if($result == false)
 		{
 			return false;
@@ -638,6 +637,16 @@ class VoipService {
 		}
 
 		return true;
+	}
+
+	public function getPresence($extendedNumber = "")
+	{
+		$result = $this->callRestClient("extensions/@me/".$extendedNumber."/presence", "GET");
+		if(isset($result))
+		{
+			return $result;
+		}
+		return null;
 	}
 
 
