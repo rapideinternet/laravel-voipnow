@@ -18,10 +18,10 @@ class VoipService {
 	private $cookie = "/tmp/cookie_%s.txt"; // placeholder filled with unified or system
 	private $debug = true;
 
-	public function __construct()
+	public function __construct($clientId = null, $clientSecret = null)
 	{
-		$this->soapClientID = config('voipnow.client_id');
-		$this->clientSecret = config('voipnow.client_secret');
+		$this->soapClientID = $clientId == null ? config('voipnow.client_id') : $clientId;
+		$this->clientSecret = $clientSecret == null ? config('voipnow.client_secret') : $clientSecret;
 		$this->authUrl = config('voipnow.auth_url');
 		$this->restClientID = config('voipnow.client_id');
 		$this->restClientSecret = config('voipnow.client_secret');
