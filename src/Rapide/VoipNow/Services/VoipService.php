@@ -7,6 +7,10 @@ use Rapide\VoipNow\Helpers\User;
 
 class VoipService {
 
+    const CALL_INCOMING = 0;
+    const CALL_OUTGOING = 1;
+    const CALL_HANGUP = 2;
+
 	private $authUrl;
 	private $apiUrl;
 	private $cookieName = "voip_now_cookie";
@@ -16,15 +20,17 @@ class VoipService {
 	private $restClientID;
 	private $restClientSecret;
 	private $cookie = "/tmp/cookie_%s.txt"; // placeholder filled with unified or system
-	private $debug = true;
+	private $debug = false;
 
 	public function __construct($clientId = null, $clientSecret = null)
 	{
 		$this->soapClientID = $clientId == null ? config('voipnow.client_id') : $clientId;
 		$this->clientSecret = $clientSecret == null ? config('voipnow.client_secret') : $clientSecret;
+		$this->restClientID = $clientId == null ? config('voipnow.client_id') : $clientId;
+		$this->restClientSecret = $clientSecret == null ? config('voipnow.client_secret') : $clientSecret;
 		$this->authUrl = config('voipnow.auth_url');
-		$this->restClientID = config('voipnow.client_id');
-		$this->restClientSecret = config('voipnow.client_secret');
+//		$this->restClientID = config('voipnow.client_id');
+//		$this->restClientSecret = config('voipnow.client_secret');
 		$this->apiUrl = config('voipnow.api_url');
 		$this->callerIdPrefix = config('voipnow.caller_id_prefix');
 	}
@@ -78,7 +84,6 @@ class VoipService {
 		curl_setopt($ch,CURLOPT_VERBOSE, false);
 
 		$result = @json_decode(curl_exec($ch), true);
-
 		curl_close($ch);
 
 		if(isset($result['access_token']) == true)
@@ -314,7 +319,7 @@ class VoipService {
 	{
 		$result = $this->callSoapClient("getExtensions");
 
-		if(isset($result->result) == true && $result->result == "failure")
+		if($result == null || (isset($result->result) == true && $result->result == "failure"))
 		{
 			return array();
 		}
@@ -590,18 +595,15 @@ class VoipService {
 	{
 		switch($type)
 		{
-			case "incomming":
-				return 0;
-				break;
+			case "incoming":
+				return self::CALL_INCOMING;
 			case "outgoing":
-				return 1;
-				break;
+				return self::CALL_OUTGOING;
 			case "hangup":
-				return 2;
-				break;
+				return self::CALL_HANGUP;
 			default:
 				$this->debug("unsupported even type ".$type);
-				break;
+                return $type;
 		}
 	}
 
