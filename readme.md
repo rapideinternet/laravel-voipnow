@@ -1,4 +1,4 @@
-# Laravel 4 / VoipNow (4PSA) package
+# Laravel VoipNow (4PSA) package
 
 Package to communicate with 4PSA VoipNow servers
 

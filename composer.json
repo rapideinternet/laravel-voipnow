@@ -1,32 +1,32 @@
 {
-    "name": "rapide/voipnow",
-    "type": "package",
-    "description": "Package to communicate with 4PSA VoipNow servers",
-    "homepage": "https://github.com/rapideinternet/laravel-voipnow",
-    "authors": [
-        {
-            "name": "Rens Reinders",
-            "email": "rens@rapide.nl",
-            "homepage": "https://rapide.nl",
-                "role": "Developer"
-        },
-        {
-            "name": "Lucas van der Have",
-            "email": "lucas@rapide.nl",
-            "homepage": "https://rapide.nl",
-                "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": ">=5.6.0",
-        "illuminate/support": "^5.3.0"
+  "name": "rapide/voipnow",
+  "type": "package",
+  "description": "Package to communicate with 4PSA VoipNow servers",
+  "homepage": "https://github.com/rapideinternet/laravel-voipnow",
+  "authors": [
+    {
+      "name": "Lucas van der Have",
+      "email": "lucas@dossierdata.nl",
+      "homepage": "https://dossierdata.nl",
+      "role": "Developer"
     },
-    "autoload": {
-        "classmap": [
-            "src/migrations"
-        ],
-        "psr-0": {
-            "Rapide\\VoipNow\\": "src/"
-        }
+    {
+      "name": "Rens Reinders",
+      "email": "rens@rapide.nl",
+      "homepage": "https://rapide.nl",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": ">=7.2.0",
+    "illuminate/support": "^6.0.0"
+  },
+  "autoload": {
+    "classmap": [
+      "src/migrations"
+    ],
+    "psr-0": {
+      "Rapide\\VoipNow\\": "src/"
+    }
+  }
 }
